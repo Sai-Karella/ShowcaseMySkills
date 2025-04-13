@@ -1,45 +1,39 @@
-body{
-  font-family: 'Segoe UI', sans-serif; 
 
+
+/* General Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
+/* Navbar Styling */
 .navbar {
-  position: fixed; /* Fix the header at the top */
-  top: 0;
-  left: 0;
-  width: 100%; /* Full width */
-  background-color: #333; /* Match sidebar color */
+  background-color: #333;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 10px 20px;
-  z-index: 1000; /* Ensure it stays above other elements */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
-.navbar .left {
-  display: flex;
-  align-items: center;
-}
+
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: white;
-  text-decoration: none;
 }
 
-
+/* Sidebar Styling */
 .sidebar {
   width: 200px;
   background-color: #333;
   color: white;
   position: fixed;
-margin-top: 25px;
+  top: 0;
   left: 0;
   height: 100%;
-  padding: 30px;
-  display: flex;
-  
+  padding: 20px;
+  display: none; /* Hidden by default */
+  z-index: 1000;
 }
 
 .sidebar ul {
@@ -57,14 +51,13 @@ margin-top: 25px;
 }
 
 .sidebar ul li a:hover {
-  background-color: #333;
+  background-color: #555;
   padding: 10px;
 }
+
 .sidebar-footer {
   text-align: center;
-  padding-top: 20px;
-  display:flexbox ; 
-
+  margin-top: 20px;
 }
 
 .sidebar-footer a {
@@ -79,66 +72,57 @@ margin-top: 25px;
 
 /* Main Content Styling */
 .main-content {
-  margin-left: 220px; /* Adjust for the sidebar */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
+  margin-left: 220px; /* Adjust for sidebar */
   padding: 20px;
-  box-sizing: border-box; /* Include padding in height calculation */
 }
 
 .profile-container {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  width: 600px;
-  max-width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-.form-container h2 {
+.profile-container h2 {
   text-align: center;
   color: #333;
 }
 
-.form-container p {
+.profile-container p {
   text-align: center;
   color: #666;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 }
 
+/* Toggle Buttons */
 .profile-toggle {
   display: flex;
-  justify-content: space-around; /* Equal spacing between buttons */
-  align-items: center;
-  margin: 20px 0; /* Add spacing above and below the buttons */
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .profile-toggle button {
-  margin: 0; /* Remove default margin */
   padding: 10px 20px;
   background-color: #5c5959;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 5px; /* Add rounded corners */
-  flex: 1; /* Make buttons occupy equal width */
-  margin: 0 10px; /* Add spacing between buttons */
 }
 
 .profile-toggle button:hover {
   background-color: #444;
 }
 
+/* Forms */
 .profile-form {
-  margin-top: 20px;
+  display: none; /* Hidden by default */
 }
 
 .profile-form input,
 .profile-form textarea {
-  display: block;
   width: 100%;
   margin: 10px 0;
   padding: 10px;
@@ -147,10 +131,11 @@ margin-top: 25px;
 }
 
 .profile-form button {
+  padding: 10px 20px;
   background-color: #5c5959;
   color: white;
-  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -158,15 +143,32 @@ margin-top: 25px;
   background-color: #444;
 }
 
-.question-circle {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid white;
-  border-radius: 50%;
-  color: white;
-  font-size: 14px;
-  margin-left: 5px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    display: block; /* Show sidebar on mobile */
+    width: 100%; /* Full width */
+    height: auto; /* Adjust height */
+    position: relative; /* Make it flow with the page */
+  }
+
+  .main-content {
+    margin-left: 0; /* Remove sidebar margin */
+    padding: 10px;
+  }
+
+  .profile-container {
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 10px auto;
+  }
+
+  .profile-toggle {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+  }
+
+  .profile-toggle button {
+    width: 100%; /* Full width buttons */
+    margin: 5px 0;
+  }
 }
