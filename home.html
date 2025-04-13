@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillHive</title>
+  <style>
+    :root {
+      --cinnamon: #35354d;
+      --white: #ffffff;
+      --text-color: #333;
+    }
+
+    body {
+      margin: 0;
+      margin-top: 25px;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://thumbs.dreamstime.com/z/winning-man-4208486.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .navbar {
+  position: fixed; /* Fix the header at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  background-color: rgb(51, 51, 51,0.8); /* Match sidebar color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 1000; /* Ensure it stays above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+    .container {
+      background-color: rgba(241, 218, 218, 0.9); /* Slight transparency */
+      padding: 60px 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 600px;
+    }
+
+    h1 {
+      color: var(--cinnamon);
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: var(--text-color);
+      margin-bottom: 40px;
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: #6c7276;
+      color: var(--white);
+      padding: 14px 28px;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #4a4d4f;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="left">
+      <h1 class="logo">SkillHive</h1>
+    </div>
+  </header>
+
+
+  <div class="container">
+    <h1>Welcome to SkillHive Platform</h1>
+    <p>Your warm and intuitive space to connect, share, and grow professionally.</p>
+    <a href="showcaseskills.html" class="button">Go to Dashboard</a>
+  </div>
+</body>
+</html>

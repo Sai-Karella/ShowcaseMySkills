@@ -1,0 +1,223 @@
+/* General Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #5c5959;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styling */
+.navbar {
+  position: fixed; /* Fix the header at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  background-color: #333; /* Match sidebar color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 1000; /* Ensure it stays above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .hamburger {
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.navbar .hamburger:hover {
+  transform: translateY(-2px);
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 83px;
+  height: 100%;
+  padding: 20px;
+  display: none; 
+  z-index: 1000;/* Initially hidden */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  background-color: #333;
+  padding: 10px;
+}
+
+.sidebar-footer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.sidebar-footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Wrapper */
+.main-content {
+  margin-top: 70px; /* Adjust this value to match the height of the navbar */
+  padding: 20px;
+}
+
+/* Tagline Section */
+.tagline {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 40px;
+  background-color: #d9dbdc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.tagline h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.tagline p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.tagline .button {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #5c5959;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  color: white;
+}
+
+.tagline .button:hover {
+  background-color: #444;
+}
+
+/* Features Section */
+.features {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #d9dbdc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features ul li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.features ul li::before {
+  content: "✔";
+  color: #555;
+  position: absolute;
+  left: 0;
+}
+
+/* Testimonials Section */
+.testimonials {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #d9dbdc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.testimonials blockquote {
+  color: #555;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Call to Action Section */
+.cta {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #d9dbdc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cta h2 {
+  margin-bottom: 20px;
+}
+
+.cta button {
+  font-size: 1rem;
+  padding: 10px 30px;
+  background-color: #5c5959;
+  color: white;
+margin:15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cta button:hover {
+  background-color: #444;
+}
