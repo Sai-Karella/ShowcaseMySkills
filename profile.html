@@ -7,35 +7,45 @@
   <link rel="stylesheet" href="profile.css" />
 
   <script>
-    function showForm(type) {
-      document.getElementById('skillForm').style.display = type === 'skill' ? 'block' : 'none';
-      document.getElementById('hireForm').style.display = type === 'hire' ? 'block' : 'none';
+
+function showForm(type) {
+      // Hide both forms initially
+      document.getElementById('skillForm').style.display = 'none';
+      document.getElementById('hireForm').style.display = 'none';
+
+      // Show the selected form
+      if (type === 'skill') {
+        document.getElementById('skillForm').style.display = 'block';
+      } else if (type === 'hire') {
+        document.getElementById('hireForm').style.display = 'block';
+      }
     }
 
     function handleFormSubmission(event, type) {
       event.preventDefault(); // Prevent default form submission
-
-      // Collect form data
+  
+      // Collect common form data
       const username = document.getElementById(`${type}Username`).value;
       const password = document.getElementById(`${type}Password`).value;
       const email = document.getElementById(`${type}Email`).value;
-
+  
       let userData = {
         username,
         password,
         email,
       };
-
+  
       if (type === 'skill') {
+        // Collect skill-specific data
         const skillsAndAchievements = document.getElementById(`${type}SkillsAchievements`).value;
-
+  
         // Collect uploaded files
         const files = document.getElementById(`${type}Files`).files;
         const uploadedFiles = [];
         for (let i = 0; i < files.length; i++) {
           uploadedFiles.push(files[i].name); // Store file names
         }
-
+  
         // Add skill-specific data
         userData = {
           ...userData,
@@ -43,9 +53,10 @@
           uploadedFiles,
         };
       } else if (type === 'hire') {
+        // Collect hire-specific data
         const position = document.getElementById(`${type}Position`).value;
         const description = document.getElementById(`${type}Description`).value;
-
+  
         // Add hire-specific data
         userData = {
           ...userData,
@@ -53,18 +64,19 @@
           description,
         };
       }
-
+  
       // Store data in localStorage
       localStorage.setItem(username, JSON.stringify(userData));
-
+  
       // Redirect to thank-you page
       window.location.href = `thank.html?username=${encodeURIComponent(username)}`;
     }
-
+  
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('skillForm').addEventListener('submit', (event) => handleFormSubmission(event, 'skill'));
       document.getElementById('hireForm').addEventListener('submit', (event) => handleFormSubmission(event, 'hire'));
     });
+    
   </script>
 </head>
 <body>
