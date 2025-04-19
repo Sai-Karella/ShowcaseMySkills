@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - SkillHive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #d9dbdc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .thank-you-container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .thank-you-container h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .thank-you-container p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .button {
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #5c5959;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">SkillHive</h1>
+  </header>
+
+  <div class="thank-you-container">
+    <h2>Thank You for Submitting Your Profile!</h2>
+    <p>Your profile has been successfully submitted. You can now view your profile.</p>
+    <div class="buttons">
+      <button class="button" onclick="redirectToUserPage()">View Profile</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToUserPage() {
+      const params = new URLSearchParams(window.location.search);
+      const username = params.get("username");
+      window.location.href = `userpage.html?username=${encodeURIComponent(username)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | SkillHive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #d9dbdc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      max-width: 400px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 95%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      background-color: #f0f0f0;
+      border-radius: 6px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: 1px solid #444;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #5c5959;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: rgb(68, 68, 68);
+    }
+
+    .footer {
+      text-align: center;
+      background: rgb(51, 51, 51);
+      color: white;
+      padding: 20px;
+      margin-top: auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    SkillHive
+  </header>
+
+  <main>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form onsubmit="handleLogin(event)">
+        <input id="loginInput" type="text" placeholder="Username or Email" required />
+        <input id="password" type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 SkillHive. All rights reserved.
+  </footer>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const loginInput = document.getElementById("loginInput").value;
+      const password = document.getElementById("password").value;
+
+      // Retrieve user data from localStorage
+      const userData = JSON.parse(localStorage.getItem(loginInput));
+
+      if (userData && userData.password === password) {
+        // Redirect to user page with username as query parameter
+        window.location.href = `userpage.html?username=${encodeURIComponent(userData.username)}`;
+      } else {
+        alert("Invalid username/email or password. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>

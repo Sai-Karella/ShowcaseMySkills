@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Page - SkillHive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .user-info {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .skills-achievements ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-achievements li {
+      background-color: #f0f0f0;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    SkillHive
+  </header>
+
+  <main>
+    <div class="user-info">
+      <h2 id="welcomeMessage">Welcome, User!</h2>
+      <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
+      <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
+
+      <div class="skills-achievements">
+        <h3>Skills and Achievements</h3>
+        <ul id="skillsAchievementsList">
+          <!-- Skills and achievements will be dynamically added here -->
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get("username");
+
+    // Retrieve user data from localStorage
+    const userData = JSON.parse(localStorage.getItem(username));
+
+    if (userData) {
+      document.getElementById("welcomeMessage").textContent = `Welcome, ${userData.username}!`;
+      document.getElementById("usernameDisplay").textContent = userData.username;
+      document.getElementById("emailDisplay").textContent = userData.email;
+
+      const skillsAchievementsList = document.getElementById("skillsAchievementsList");
+      if (userData.skillsAndAchievements) {
+        userData.skillsAndAchievements.split(',').forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item.trim();
+          skillsAchievementsList.appendChild(li);
+        });
+      }
+    } else {
+      document.body.innerHTML = "<h2>User not found. Please create a profile first.</h2>";
+    }
+  </script>
+</body>
+</html>
