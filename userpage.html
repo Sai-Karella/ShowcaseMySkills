@@ -39,16 +39,27 @@
       padding: 20px;
     }
 
-    .skills-achievements ul {
+    .combined-section ul,
+    .hire-details-section ul {
       list-style: none;
       padding: 0;
     }
 
-    .skills-achievements li {
+    .combined-section li,
+    .hire-details-section li {
       background-color: #f0f0f0;
       margin: 5px 0;
       padding: 10px;
       border-radius: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      background: rgb(51, 51, 51);
+      color: white;
+      padding: 20px;
+      margin-top: auto;
+      width: 100%;
     }
   </style>
 </head>
@@ -63,14 +74,27 @@
       <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
       <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
 
-      <div class="skills-achievements">
+      <!-- Combined Skills and Achievements Section -->
+      <div class="combined-section" id="combinedSection" style="display: none;">
         <h3>Skills and Achievements</h3>
-        <ul id="skillsAchievementsList">
-          <!-- Skills and achievements will be dynamically added here -->
+        <ul id="combinedList">
+          <!-- Combined skills and achievements will be dynamically added here -->
+        </ul>
+      </div>
+
+      <!-- Hire Details Section -->
+      <div class="hire-details-section" id="hireDetailsSection" style="display: none;">
+        <h3>Hire Details</h3>
+        <ul id="hireDetailsList">
+          <!-- Hire details will be dynamically added here -->
         </ul>
       </div>
     </div>
   </main>
+
+  <footer class="footer">
+    © 2025 SkillHive. All rights reserved.
+  </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -84,13 +108,31 @@
       document.getElementById("usernameDisplay").textContent = userData.username;
       document.getElementById("emailDisplay").textContent = userData.email;
 
-      const skillsAchievementsList = document.getElementById("skillsAchievementsList");
+      // Populate combined skills and achievements
+      const combinedSection = document.getElementById("combinedSection");
+      const combinedList = document.getElementById("combinedList");
       if (userData.skillsAndAchievements) {
-        userData.skillsAndAchievements.split(',').forEach((item) => {
+        combinedSection.style.display = "block";
+        userData.skillsAndAchievements.split(",").forEach((item) => {
           const li = document.createElement("li");
           li.textContent = item.trim();
-          skillsAchievementsList.appendChild(li);
+          combinedList.appendChild(li);
         });
+      }
+
+      // Populate hire details (if applicable)
+      const hireDetailsSection = document.getElementById("hireDetailsSection");
+      const hireDetailsList = document.getElementById("hireDetailsList");
+      if (userData.position && userData.description) {
+        hireDetailsSection.style.display = "block";
+
+        const positionItem = document.createElement("li");
+        positionItem.textContent = `Position: ${userData.position}`;
+        hireDetailsList.appendChild(positionItem);
+
+        const descriptionItem = document.createElement("li");
+        descriptionItem.textContent = `Description: ${userData.description}`;
+        hireDetailsList.appendChild(descriptionItem);
       }
     } else {
       document.body.innerHTML = "<h2>User not found. Please create a profile first.</h2>";
