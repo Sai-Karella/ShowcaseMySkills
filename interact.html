@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interact Page - SkillHive</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .search-bar {
+      max-width: 800px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .profiles-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .profile {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .profile:last-child {
+      border-bottom: none;
+    }
+
+    .profile h3 {
+      margin: 0;
+    }
+
+    .profile p {
+      margin: 5px 0;
+    }
+
+    .footer {
+      text-align: center;
+      background: rgb(51, 51, 51);
+      color: white;
+      padding: 20px;
+      margin-top: auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    SkillHive - Interact Page
+    <button onclick="viewMyProfile()" style="float: right; margin-right: 20px;">View My Profile</button>
+  </header>
+
+  <main>
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by skills, position, or description..." />
+      <button onclick="searchProfiles()">Search</button>
+    </div>
+
+    <!-- Profiles Container -->
+    <div class="profiles-container" id="profilesContainer">
+      <!-- Profiles will be dynamically added here -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 SkillHive. All rights reserved.
+  </footer>
+
+  <script>
+    function viewMyProfile() {
+      // Redirect to the user profile page
+      window.location.href = "userpage.html";
+    }
+
+    function loadProfiles() {
+      const profilesContainer = document.getElementById("profilesContainer");
+      profilesContainer.innerHTML = ""; // Clear existing profiles
+
+      // Iterate through all keys in localStorage
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const userData = JSON.parse(localStorage.getItem(key));
+
+        // Skip if the data is not a valid profile
+        if (!userData || !userData.username || !userData.email) continue;
+
+        // Create a profile card
+        const profileDiv = document.createElement("div");
+        profileDiv.classList.add("profile");
+
+        profileDiv.innerHTML = `
+          <h3>${userData.username}</h3>
+          <p><strong>Email:</strong> ${userData.email}</p>
+          ${userData.skillsAndAchievements ? `<p><strong>Skills & Achievements:</strong> ${userData.skillsAndAchievements}</p>` : ""}
+          ${userData.position ? `<p><strong>Position:</strong> ${userData.position}</p>` : ""}
+          ${userData.description ? `<p><strong>Description:</strong> ${userData.description}</p>` : ""}
+        `;
+
+        profilesContainer.appendChild(profileDiv);
+      }
+    }
+
+    function searchProfiles() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const profilesContainer = document.getElementById("profilesContainer");
+      profilesContainer.innerHTML = ""; // Clear existing profiles
+
+      // Iterate through all keys in localStorage
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const userData = JSON.parse(localStorage.getItem(key));
+
+        // Skip if the data is not a valid profile
+        if (!userData || !userData.username || !userData.email) continue;
+
+        // Check if the search input matches any profile data
+        const combinedData = `
+          ${userData.username}
+          ${userData.email}
+          ${userData.skillsAndAchievements || ""}
+          ${userData.position || ""}
+          ${userData.description || ""}
+        `.toLowerCase();
+
+        if (combinedData.includes(searchInput)) {
+          // Create a profile card
+          const profileDiv = document.createElement("div");
+          profileDiv.classList.add("profile");
+
+          profileDiv.innerHTML = `
+            <h3>${userData.username}</h3>
+            <p><strong>Email:</strong> ${userData.email}</p>
+            ${userData.skillsAndAchievements ? `<p><strong>Skills & Achievements:</strong> ${userData.skillsAndAchievements}</p>` : ""}
+            ${userData.position ? `<p><strong>Position:</strong> ${userData.position}</p>` : ""}
+            ${userData.description ? `<p><strong>Description:</strong> ${userData.description}</p>` : ""}
+          `;
+
+          profilesContainer.appendChild(profileDiv);
+        }
+      }
+    }
+
+    // Load all profiles on page load
+    window.onload = loadProfiles;
+  </script>
+</body>
+</html>
