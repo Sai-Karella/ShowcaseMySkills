@@ -89,7 +89,6 @@
   </style>
 </head>
 <body>
-
   <header class="navbar">
     SkillHive
   </header>
@@ -120,8 +119,11 @@
       const userData = JSON.parse(localStorage.getItem(loginInput));
 
       if (userData && userData.password === password) {
-        // Redirect to user page with username as query parameter
-        window.location.href = `userpage.html?username=${encodeURIComponent(userData.username)}`;
+        // Store the logged-in user's username in sessionStorage
+        sessionStorage.setItem("loggedInUser", userData.username);
+
+        // Redirect to the interact page
+        window.location.href = "interact.html";
       } else {
         alert("Invalid username/email or password. Please try again.");
       }
