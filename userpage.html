@@ -39,14 +39,12 @@
       padding: 20px;
     }
 
-    .combined-section ul,
-    .hire-details-section ul {
+    .skills-section ul {
       list-style: none;
       padding: 0;
     }
 
-    .combined-section li,
-    .hire-details-section li {
+    .skills-section li {
       background-color: #f0f0f0;
       margin: 5px 0;
       padding: 10px;
@@ -74,19 +72,11 @@
       <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
       <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
 
-      <!-- Combined Skills and Achievements Section -->
-      <div class="combined-section" id="combinedSection" style="display: none;">
+      <!-- Skills and Achievements Section -->
+      <div class="skills-section" id="skillsSection" style="display: none;">
         <h3>Skills and Achievements</h3>
-        <ul id="combinedList">
-          <!-- Combined skills and achievements will be dynamically added here -->
-        </ul>
-      </div>
-
-      <!-- Hire Details Section -->
-      <div class="hire-details-section" id="hireDetailsSection" style="display: none;">
-        <h3>Hire Details</h3>
-        <ul id="hireDetailsList">
-          <!-- Hire details will be dynamically added here -->
+        <ul id="skillsList">
+          <!-- Skills and achievements will be dynamically added here -->
         </ul>
       </div>
     </div>
@@ -97,42 +87,28 @@
   </footer>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const username = params.get("username");
-
-    // Retrieve user data from localStorage
+    const username = sessionStorage.getItem("loggedInUser");
+  
+    if (!username) {
+      window.location.href = "login.html";
+    }
+  
     const userData = JSON.parse(localStorage.getItem(username));
-
+  
     if (userData) {
       document.getElementById("welcomeMessage").textContent = `Welcome, ${userData.username}!`;
       document.getElementById("usernameDisplay").textContent = userData.username;
       document.getElementById("emailDisplay").textContent = userData.email;
-
-      // Populate combined skills and achievements
-      const combinedSection = document.getElementById("combinedSection");
-      const combinedList = document.getElementById("combinedList");
+  
+      const skillsSection = document.getElementById("skillsSection");
+      const skillsList = document.getElementById("skillsList");
       if (userData.skillsAndAchievements) {
-        combinedSection.style.display = "block";
+        skillsSection.style.display = "block";
         userData.skillsAndAchievements.split(",").forEach((item) => {
           const li = document.createElement("li");
           li.textContent = item.trim();
-          combinedList.appendChild(li);
+          skillsList.appendChild(li);
         });
-      }
-
-      // Populate hire details (if applicable)
-      const hireDetailsSection = document.getElementById("hireDetailsSection");
-      const hireDetailsList = document.getElementById("hireDetailsList");
-      if (userData.position && userData.description) {
-        hireDetailsSection.style.display = "block";
-
-        const positionItem = document.createElement("li");
-        positionItem.textContent = `Position: ${userData.position}`;
-        hireDetailsList.appendChild(positionItem);
-
-        const descriptionItem = document.createElement("li");
-        descriptionItem.textContent = `Description: ${userData.description}`;
-        hireDetailsList.appendChild(descriptionItem);
       }
     } else {
       document.body.innerHTML = "<h2>User not found. Please create a profile first.</h2>";
