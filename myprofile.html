@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile - SkillHive</title>
+  <style>
+    :root {
+      --primary: #4CAF50; /* Green theme */
+      --bg: white; /* Background color */
+      --text: #333; /* Text color */
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      background-image: url("back.png");
+      background-size: cover;
+      background-attachment: fixed;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    main {
+      flex: 1;
+      padding: 100px 20px 20px; /* Add padding to account for fixed navbar */
+    }
+
+    .user-info {
+      background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .user-info h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .user-info p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .skills-section {
+      margin-top: 20px;
+    }
+
+    .skills-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-section ul li {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer {
+      text-align: center;
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: var(--primary);
+      padding: 1.5rem 0;
+      margin-top: auto;
+      box-shadow: 0 -2px 5px var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">SkillHive</h1>
+  </header>
+
+  <main>
+    <div class="user-info">
+      <h2 id="welcomeMessage">Welcome, User!</h2>
+      <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
+      <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
+
+      <!-- Skills and Achievements Section -->
+      <div class="skills-section" id="skillsSection" style="display: none;">
+        <p><strong>Skills and Achievements</strong></p>
+        <ul id="skillsList">
+          <!-- Skills and achievements will be dynamically added here -->
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 SkillHive. All rights reserved.
+  </footer>
+  <script>
+    // Retrieve the logged-in user's username from sessionStorage
+    const username = sessionStorage.getItem("loggedInUser");
+  
+    if (username) {
+      // Retrieve user data from localStorage
+      const userData = JSON.parse(localStorage.getItem(username));
+  
+      if (userData) {
+        // Display user data
+        document.getElementById("welcomeMessage").textContent = `Welcome, ${userData.username}!`;
+        document.getElementById("usernameDisplay").textContent = userData.username;
+        document.getElementById("emailDisplay").textContent = userData.email;
+  
+        // Display skills and achievements if available
+        if (userData.skillsAndAchievements) {
+          const skillsSection = document.getElementById("skillsSection");
+          const skillsList = document.getElementById("skillsList");
+          skillsSection.style.display = "block";
+          userData.skillsAndAchievements.split(",").forEach((skill) => {
+            const li = document.createElement("li");
+            li.textContent = skill.trim();
+            skillsList.appendChild(li);
+          });
+        }
+  
+        // Display hiring profile details if the user is a hiring profile
+        if (userData.type === "hire") {
+          const hireDetails = document.createElement("div");
+          hireDetails.innerHTML = `
+            <h3>Hiring Details</h3>
+            <p><strong>Position:</strong> ${userData.position}</p>
+            <p><strong>Description:</strong> ${userData.description}</p>
+          `;
+          document.querySelector(".user-info").appendChild(hireDetails);
+        }
+      } else {
+        // Display an error message if the user data is not found
+        document.body.innerHTML = "<h2>User data not found. Please create a profile first.</h2>";
+      }
+    } else {
+      // If no user is logged in, display an error message
+      document.body.innerHTML = "<h2>No user is currently logged in.</h2>";
+    }
+  </script>
+</body>
+</html>

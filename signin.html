@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | SkillHive</title>
+
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url("back.png");
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: rgb(255, 255, 255, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-container h1 {
+      font-size: 1.8rem;
+      color: #4CAF50;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .login-container label {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .login-container input {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .login-container input:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    .login-container button {
+      background: #4CAF50;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: #388e3c; /* Darker green for hover */
+    }
+
+    .login-container .forgot-password {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .login-container .forgot-password a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    .login-container .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .login-container .divider {
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container .divider::before,
+    .login-container .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .login-container .divider span {
+      margin: 0 1rem;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .login-container .social-login button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgb(245, 245, 245, 0.8);
+      color: #333;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-container .social-login button:hover {
+      background: #e0e0e0;
+    }
+
+    .login-container .social-login img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Sign In</h1>
+    <form onsubmit="login(event)" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+      <div>
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Keep me logged in</label>
+      </div>
+
+      <button type="submit">Sign In</button>
+    </form>
+
+    <div class="forgot-password">
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <div class="social-login">
+      <button>
+        <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" />
+        Continue with Google
+      </button>
+      <button>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
+        Sign in with Apple
+      </button>
+    </div>
+
+    <p class="signup-link" style="text-align: left; margin-top: 10px;">
+      New to SkillHive? <a href="signup.html" style="color: #4CAF50;">Join now</a>
+    </p>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Retrieve user data from localStorage
+      const userData = JSON.parse(localStorage.getItem(username));
+
+      if (userData && userData.password === password) {
+        // Store the logged-in user's username in sessionStorage
+        sessionStorage.setItem("loggedInUser", username);
+
+        // Redirect to the interact page
+        window.location.href = "interact.html";
+      } else {
+        alert("Invalid username or password.");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillHive | Empowering Talent</title>
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f5f8fc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background: #aaf3b2; /* Green theme */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4CAF50;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #4CAF50;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #4CAF50; /* Darker green hover effect */
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #4CAF50, #BFFCC6); /* Green gradient */
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    /* Info Section */
+    .info-section {
+      padding: 60px 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .info-section.alt {
+      background: #f0f6fc;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .info-section h2 {
+      font-size: 32px;
+      color: #4CAF50; /* Green theme */
+      margin-bottom: 20px;
+    }
+
+    .info-section p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .icon-block {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+
+    .icon-block .icon {
+      font-size: 30px;
+      color: #4CAF50; /* Green theme */
+    }
+
+    .icon-block h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #4CAF50;
+    }
+
+    .icon-block p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 20px;
+      background: #BFFCC6;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-item h3 {
+      font-size: 20px;
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .feature-item p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 60px 20px;
+      background: #e8f8e9;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-item h3 {
+      font-size: 18px;
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-item p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+      background: #aaf3b2;
+      color: #4CAF50;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <div class="container">
+    <div class="logo">SkillHive</div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="demo.html">Request a Demo</a></li>
+        <li><a href="signup.html">Sign up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Where Talent Meets Opportunity</h1>
+    <p>Showcase your skills. Discover opportunities. Grow with SkillHive.</p>
+    <h3>Get Started</h3h3>
+  </div>
+</section>
+<section class="info-section alt">
+  <div class="container icon-block">
+    <div class="text-content">
+      <h2>Our Vision <span class="icon">👁️</span></h2>
+      <p>
+        We envision a world where talent is easily discoverable, and opportunities are accessible to everyone. 
+        By fostering meaningful connections, we strive to empower individuals and organizations to achieve their goals 
+        and make a positive impact on the world.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="info-section">
+  <div class="container icon-block">
+    <div class="text-content">
+      <h2>Our Motive <span class="icon">🎯</span></h2>
+      <p>
+        SkillHive was created to bridge the gap between talented individuals and the opportunities they deserve. 
+        Whether you're a professional looking to showcase your expertise or an organization in search of exceptional skills, 
+        our platform is designed to help you connect, collaborate, and succeed.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="features">
+  <h2>Our Features</h2>
+  <div class="features-grid">
+    <div class="feature-item">
+      <h3>Skill Surveys</h3>
+      <p>Evaluate the skills of your team members and identify areas for improvement to ensure organizational growth.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Ideas and Initiatives</h3>
+      <p>Encourage innovation by gathering and implementing creative ideas from your team.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Training and Development</h3>
+      <p>Provide targeted training programs to enhance the skills and knowledge of your workforce.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Knowledge Sharing</h3>
+      <p>Facilitate seamless collaboration and knowledge sharing across teams to boost productivity.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Expert Search</h3>
+      <p>Quickly find the right experts for your projects and ensure the best outcomes.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Internal Talent Marketplace</h3>
+      <p>Enable employees to explore new opportunities within the organization and grow their careers.</p>
+    </div>
+  </div>
+</section>
+<section class="testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-item">
+      <h3>Jane Doe</h3>
+      <p>"SkillHive helped us streamline our talent management process."</p>
+    </div>
+    <div class="testimonial-item">
+      <h3>John Smith</h3>
+      <p>"The training programs have been a game-changer for our team."</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <p>&copy; 2025 SkillHive. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

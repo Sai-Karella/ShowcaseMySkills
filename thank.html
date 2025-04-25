@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - SkillHive</title>
+  <style>
+    :root {
+      --primary: #4CAF50; /* Green theme */
+      --bg: white; /* Background color */
+      --text: #333; /* Text color */
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      background-image: url("back.png");
+      background-size: cover;
+      background-attachment: fixed;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .thank-you-container {
+      text-align: center;
+      margin: 100px auto 20px; /* Add margin to account for fixed navbar */
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow);
+      max-width: 600px;
+    }
+
+    .thank-you-container h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .thank-you-container p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #388e3c; /* Darker green for hover */
+    }
+
+    .footer {
+      text-align: center;
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: var(--primary);
+      padding: 1.5rem 0;
+      margin-top: auto;
+      box-shadow: 0 -2px 5px var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">SkillHive</h1>
+  </header>
+
+  <div class="thank-you-container">
+    <h2>Thank You!</h2>
+    <p>Your submission has been successfully received.</p>
+    <div class="buttons">
+      <button class="button" onclick="redirectToIndexPage()">Go Back</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToIndexPage() {
+      window.location.href = "index.html"; // Redirect to the home page
+    }
+  </script>
+
+  <footer class="footer">
+    © 2025 SkillHive. All rights reserved.
+  </footer>
+</body>
+</html>

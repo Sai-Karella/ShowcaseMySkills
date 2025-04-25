@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | SkillHive</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #4CAF50; /* Green theme */
+      --bg: white; /* Background color */
+      --text: #333; /* Text color */
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin-top: 30px;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      background-image: url("back.png");
+      background-size: cover;
+      background-attachment: fixed;
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 1.5rem 0;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar {
+      position: fixed; /* Fix the header at the top */
+      top: 0;
+      left: 0;
+      width: 100%; /* Full width */
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: #4CAF50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      z-index: 1000; /* Ensure it stays above other elements */
+      box-shadow: 0 2px 5px var(--shadow);
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4CAF50;
+      text-decoration: none;
+      margin: 7px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .contact-section {
+      padding: 5rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .contact-info {
+      padding: 2rem;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .contact-info p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-info li {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    form button {
+      margin-top: 1.5rem;
+      padding: 0.9rem 1.5rem;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #348d37; /* Darker green for hover */
+    }
+
+    footer {
+      background-color: rgb(191, 252, 198, 0.9); /* Match green theme */
+      color: #4CAF50;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        margin-left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <h1 class="logo">SkillHive</h1>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to Skill Hive</h2>
+    <p>Where skills meet opportunity — let’s build your future together.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let’s Collaborate</h2>
+          <p>
+            Have a question or opportunity? Reach out and we’ll get back to you as soon as possible. At Skill Hive, we believe in connecting passion with purpose.
+          </p>
+          <ul>
+            <li><strong>Email:</strong> support@skillhive.com</li>
+            <li><strong>Phone:</strong> +1 234 567 890</li>
+            <li><strong>Address:</strong> 123 Talent Street, Creators City</li>
+          </ul>
+        </div>
+
+        <div class="contact-card">
+          <form onsubmit="redirectToThankPage(event)" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Skill Hive — Empowering Talents, Building Futures.</p>
+    </div>
+  </footer>
+
+  <script>
+    function redirectToThankPage(event) {
+      event.preventDefault(); // Prevent the default form submission
+      window.location.href = "thank.html"; // Redirect to the thank you page
+    }
+  </script>
+</body>
+</html>
